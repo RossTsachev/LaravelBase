@@ -5,12 +5,14 @@
 		<title>Laravel Base App</title>
 	</head>
 	<body>
+		
 		<ul>
-			
+			<li>Welcome {{Auth::user()->name}}</li>
 			<li><a href = "{{action('BookController@index')}}">All Books</a></li>
 			<li><a href = "{{action('AuthorController@index')}}">All Authors</a></li>
 			<li><a href = "{{action('BookController@create')}}">Create Book</a></li>
 			<li><a href = "{{action('AuthorController@create')}}">Create Author</a></li>
+			<li><a href = "{{URL::to('auth/logout')}}">Log out</a></li>
 		</ul>
 
 		@yield('content')

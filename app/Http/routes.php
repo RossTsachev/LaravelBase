@@ -11,7 +11,17 @@
 |
 */
 
-Route::get('/', 'BookController@index');
+Route::get('/', function(){
+	return view('auth/login');
+});
+// Route::get('/register', function(){
+// 	return view('auth/register');
+// });
+
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
 
 Route::resource('books', 'BookController');
 Route::resource('authors', 'AuthorController');
