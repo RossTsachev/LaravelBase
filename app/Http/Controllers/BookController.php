@@ -41,6 +41,7 @@ class BookController extends Controller {
 		$book = \App\Book::create($input);
 		$authors = $request->input('author_list');
 		$book->authors()->sync($authors);
+		\Session::flash('flash-message', 'The book was saved.');
 		return redirect('books');
 	}
 
@@ -61,6 +62,7 @@ class BookController extends Controller {
 		$book->update($request->all());
 		$authors = $request->input('author_list');
 		$book->authors()->sync($authors);
+		\Session::flash('flash-message', 'The book was edited.');
 		return redirect('books');
 	}
 }

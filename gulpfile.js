@@ -27,7 +27,8 @@ elixir(function(mix) {
 	mix.scripts([
 			'libs/jquery.min.js',
 			'libs/bootstrap.min.js',
-			'libs/select2.min.js'
+			'libs/select2.min.js',
+			'app.js'
 		],
 		'public/js'
 	);

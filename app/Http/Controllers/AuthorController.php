@@ -40,7 +40,7 @@ class AuthorController extends Controller {
 	{
 		 $input = $request->all();
 		 \App\Author::create($input);
-
+		 \Session::flash('flash-message', 'The author was saved.');
 		 return redirect('authors');
 	}
 
@@ -78,7 +78,7 @@ class AuthorController extends Controller {
 	{
 		$author = \App\Author::findOrFail($id);
 		$author->update($request->all());
-
+		\Session::flash('flash-message', 'The author was updated.');
 		return redirect('authors');
 	}
 

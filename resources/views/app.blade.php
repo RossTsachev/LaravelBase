@@ -7,9 +7,8 @@
 		
 		<title>Laravel Base App</title>
 
-		<!-- Bootstrap -->
-		<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/css/select2.min.css" rel="stylesheet" />
 		<link href="/css/all.css" rel="stylesheet">
+
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	    <!--[if lt IE 9]>
@@ -20,13 +19,12 @@
 	<body>
 		@yield('navigation')
 		<div class="container">
+			@include('partials.flash')
+
 			@yield('content')
 		</div>
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		
 	    <script src="/js/all.js"></script>
-	    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/js/select2.min.js"></script>
-	    <script>
-			$('.select2').select2();
-		</script>
+	  
 	</body>
 </html>	
