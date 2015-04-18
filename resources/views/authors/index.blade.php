@@ -1,9 +1,15 @@
 @extends('app')
 
+@section('navigation')
+	@include('partials.navigation')
+@stop
+
 @section('content')
+	
+
 	<h1>Authors</h1>
 
-	<table>
+	<table class = "table table-striped table-hover">
 		<thead>
 			<tr>
 				<th>Id</th>
@@ -20,7 +26,7 @@
 					<td>
 						<a href = "{{action('AuthorController@show', [$author->id])}}">{{$author->name}}</a>
 					</td>
-					<td>
+					<td class = "text-right">
 						<a href = "{{action('AuthorController@edit', [$author->id])}}">Edit</a>
 					</td>
 				</tr>

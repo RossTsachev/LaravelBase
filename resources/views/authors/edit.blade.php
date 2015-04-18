@@ -1,5 +1,9 @@
 @extends('app')
 
+@section('navigation')
+	@include('partials.navigation')
+@stop
+
 @section('content')
 	<h1>Update Author</h1>
 

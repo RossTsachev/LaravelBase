@@ -1,14 +1,18 @@
 @extends('app')
 
+@section('navigation')
+	@include('partials.navigation')
+@stop
+
 @section('content')
 	<h1>Books</h1>
 
-	<table>
+	<table class = "table table-striped table-hover">
 		<thead>
 			<tr>
 				<th>Id</th>
 				<th>Name</th>
-				<th>Actions</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -22,7 +26,7 @@
 							{{$book->title}}
 						</a>
 					</td>
-					<td>
+					<td class = "text-right">
 						<a href = "{{action('BookController@edit', [$book->id])}}">
 							Edit
 						</a>

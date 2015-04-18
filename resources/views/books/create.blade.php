@@ -1,5 +1,9 @@
 @extends('app')
 
+@section('navigation')
+	@include('partials.navigation')
+@stop
+
 @section('content')
 	<h1>Create new Book</h1>
 
@@ -11,3 +15,4 @@
 
 	{!! Form::close() !!}
 @stop
+

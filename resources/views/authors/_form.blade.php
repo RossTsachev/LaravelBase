@@ -1,4 +1,8 @@
-{!! Form::label('name', 'Author name:') !!}
-{!! Form::text('name') !!}
+<div class = "form-group">
+	{!! Form::label('name', 'Author name:') !!}
+	{!! Form::text('name', null, ['class' => 'form-control']) !!}
+</div>
 
-{!! Form::submit($submitBtnText) !!}
+<div class = "form-group">
+	{!! Form::submit($submitBtnText, ['class' => 'btn btn-primary form-control']) !!}
+</div>

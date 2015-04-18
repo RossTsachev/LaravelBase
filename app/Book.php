@@ -8,6 +8,11 @@ class Book extends Model {
 		'title'
 	];
 
+	public function posts()
+	{
+		return $this->hasMany('\App\Post');
+	}
+
 	public function authors() 
 	{
 		return $this->belongsToMany('\App\Author')->withTimestamps();
