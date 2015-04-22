@@ -2,6 +2,8 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Author;
+use Session;
 
 class AuthorController extends Controller {
 
@@ -17,7 +19,7 @@ class AuthorController extends Controller {
 	 */
 	public function index()
 	{
-		$authors = \App\Author::latest()->get();
+		$authors = Author::latest()->get();
 		return view('authors.index')->with('authors', $authors);
 	}
 
@@ -39,8 +41,8 @@ class AuthorController extends Controller {
 	public function store(Requests\AuthorRequest $request)
 	{
 		 $input = $request->all();
-		 \App\Author::create($input);
-		 \Session::flash('flash-message', 'The author was saved.');
+		 Author::create($input);
+		 Session::flash('flash-message', 'The author was saved.');
 		 return redirect('authors');
 	}
 
@@ -52,7 +54,7 @@ class AuthorController extends Controller {
 	 */
 	public function show($id)
 	{
-		$author = \App\Author::findOrFail($id);
+		$author = Author::findOrFail($id);
 		return view('authors.show')->with('author', $author);
 	}
 
@@ -64,7 +66,7 @@ class AuthorController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$author = \App\Author::findOrFail($id);
+		$author = Author::findOrFail($id);
 		return view('authors.edit')->with('author', $author);
 	}
 
@@ -76,21 +78,9 @@ class AuthorController extends Controller {
 	 */
 	public function update($id, Requests\AuthorRequest $request)
 	{
-		$author = \App\Author::findOrFail($id);
+		$author = Author::findOrFail($id);
 		$author->update($request->all());
-		\Session::flash('flash-message', 'The author was updated.');
+		Session::flash('flash-message', 'The author was updated.');
 		return redirect('authors');
 	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
 }

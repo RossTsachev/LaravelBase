@@ -14,9 +14,6 @@
 Route::get('/', function(){
 	return view('auth/login');
 });
-// Route::get('/register', function(){
-// 	return view('auth/register');
-// });
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
@@ -25,3 +22,4 @@ Route::controllers([
 
 Route::resource('books', 'BookController');
 Route::resource('authors', 'AuthorController');
+Route::post('books/{books}', 'PostController@store');
