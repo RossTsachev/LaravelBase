@@ -12,7 +12,8 @@
 		<thead>
 			<tr>
 				<th>Id</th>
-				<th>Name</th>
+                <th>Name</th>
+				<th>Books</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -30,6 +31,7 @@
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'name', name: 'name'},
+                    {data: 'books', name: 'books'},
                     {data: 'action', name: 'action', orderable: false, searchable: false, class: 'dt-right'}
                 ]
             });

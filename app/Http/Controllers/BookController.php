@@ -9,6 +9,7 @@ use yajra\Datatables\Datatables;
 use App\Book;
 use App\Author;
 use Session;
+use Illuminate\Support\Collection;
 
 class BookController extends Controller {
 
@@ -30,18 +31,35 @@ class BookController extends Controller {
 
 	public function getBooks()
 	{
-		$books = Book::select(['id', 'title']);
+		$books = Book::all();
+		$result = new Collection();
 
-        return Datatables::of($books)
-        	->editColumn(
-        		'title',
-        		'<a href="{{action(\'BookController@show\', [$id])}}">{{ $title }}</a>'
-        	)
-			->editColumn(
-				'action',
-				'<a href="{{action(\'BookController@edit\', [$id])}}">Edit</a>'
-			)
-        	->make(true);
+		foreach ($books as $book) {
+			$authorList = '';
+			foreach ($book->authors as $author) {
+				$comma = $authorList ? ', ' : '';
+				$authorList .= $comma
+					. '<a href="'
+					. action('AuthorController@show', [$author->id])
+					. '">'
+					. $author->name
+					. '</a>';
+			}
+			$result->push([
+				'id' => $book->id,
+				'title' => '<a href="'
+					. action('BookController@show', [$book->id])
+					. '">'
+					. $book->title
+					. '</a>',
+				'authors' => $authorList,	
+				'action' => '<a href="'
+					.action('BookController@edit', [$book->id])
+					. '">Edit</a>'
+			]);
+		}
+
+		return Datatables::of($result)->make(true);
 	}
 
 	public function show($id)

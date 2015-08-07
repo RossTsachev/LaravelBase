@@ -5,6 +5,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Author;
 use Session;
+use Illuminate\Support\Collection;
 
 class AuthorController extends Controller {
 
@@ -24,20 +25,41 @@ class AuthorController extends Controller {
 		return view('authors.index')->with('authors', $authors);
 	}
 
+	/**
+	 * Displays json for all the authors
+	 * @return json
+	 */
 	public function getAuthors()
 	{
-		$authors = Author::select(['id', 'name']);
+		$authors = Author::all();
+		$result = new Collection;
 
-        return Datatables::of($authors)
-        	->editColumn(
-        		'name',
-        		'<a href="{{action(\'AuthorController@show\', [$id])}}">{{ $name }}</a>'
-        	)
-			->editColumn(
-				'action',
-				'<a href="{{action(\'AuthorController@edit\', [$id])}}">Edit</a>'
-			)
-        	->make(true);
+		foreach ($authors as $author) {
+			$bookList = '';
+			foreach ($author->books as $book) {
+				$comma = $bookList ? ', ' : '';
+				$bookList .= $comma
+					. '<a href="'
+					. action('BookController@show', [$book->id])
+					. '">'
+					. $book->title
+					. '</a>';
+			}
+			$result->push([
+				'id' => $author->id,
+				'name' => '<a href="'
+					. action('AuthorController@show', [$author->id])
+					. '">'
+					. $author->name
+					. '</a>',
+				'books' => $bookList,	
+				'action' => '<a href="'
+					. action('AuthorController@edit', [$author->id])
+					. '">Edit</a>'
+			]);
+		}
+
+		return Datatables::of($result)->make(true);
 	}
 
 	/**

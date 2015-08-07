@@ -12,6 +12,7 @@
             <tr>
                 <th>Id</th>
                 <th>Title</th>
+                <th>Authors</th>
                 <th class = "dt-right"></th>
             </tr>
         </thead>
@@ -28,6 +29,7 @@
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'title', name: 'title'},
+                    {data: 'authors', name: 'authors'},
                     {data: 'action', name: 'action', orderable: false, searchable: false, class: 'dt-right'}
                 ]
             });
