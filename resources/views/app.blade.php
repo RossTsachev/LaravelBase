@@ -8,6 +8,8 @@
 		<title>Laravel Base App</title>
 
 		<link href="/css/all.css" rel="stylesheet">
+		<link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,6 +27,7 @@
 		</div>
 		
 	    <script src="/js/all.js"></script>
-	  
+	    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+	  	@stack('scripts')
 	</body>
 </html>	

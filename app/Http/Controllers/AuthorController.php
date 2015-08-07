@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use yajra\Datatables\Datatables;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Author;
@@ -21,6 +22,22 @@ class AuthorController extends Controller {
 	{
 		$authors = Author::latest()->get();
 		return view('authors.index')->with('authors', $authors);
+	}
+
+	public function getAuthors()
+	{
+		$authors = Author::select(['id', 'name']);
+
+        return Datatables::of($authors)
+        	->editColumn(
+        		'name',
+        		'<a href="{{action(\'AuthorController@show\', [$id])}}">{{ $name }}</a>'
+        	)
+			->editColumn(
+				'action',
+				'<a href="{{action(\'AuthorController@edit\', [$id])}}">Edit</a>'
+			)
+        	->make(true);
 	}
 
 	/**

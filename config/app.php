@@ -145,6 +145,8 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+
+		yajra\Datatables\DatatablesServiceProvider::class,
 	],
 
 	/*
@@ -193,7 +195,8 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'		=> 'Illuminate\Html\FormFacade',
-		'Html'		=> 'Illuminate\Html\HtmlFacade'
+		'Html'		=> 'Illuminate\Html\HtmlFacade',
+		'Datatables'=> yajra\Datatables\Datatables::class,
 
 	],
 

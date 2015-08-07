@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
 Route::get('/', function(){
 	return view('auth/login');
 });
@@ -22,4 +11,10 @@ Route::controllers([
 
 Route::resource('books', 'BookController');
 Route::resource('authors', 'AuthorController');
+
+//comments for a book
 Route::post('books/{books}', 'PostController@store');
+
+//Ajax
+Route::get('/book/getBooks', 'BookController@getBooks');
+Route::get('/author/getAuthors', 'AuthorController@getAuthors');

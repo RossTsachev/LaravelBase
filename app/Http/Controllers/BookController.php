@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use yajra\Datatables\Datatables;
 use App\Book;
 use App\Author;
 use Session;
@@ -25,6 +26,22 @@ class BookController extends Controller {
 	{
 		$books = Book::all();
 		return view('books.index')->with('books', $books);
+	}
+
+	public function getBooks()
+	{
+		$books = Book::select(['id', 'title']);
+
+        return Datatables::of($books)
+        	->editColumn(
+        		'title',
+        		'<a href="{{action(\'BookController@show\', [$id])}}">{{ $title }}</a>'
+        	)
+			->editColumn(
+				'action',
+				'<a href="{{action(\'BookController@edit\', [$id])}}">Edit</a>'
+			)
+        	->make(true);
 	}
 
 	public function show($id)
