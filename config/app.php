@@ -147,6 +147,7 @@ return [
 		'App\Providers\RouteServiceProvider',
 
 		yajra\Datatables\DatatablesServiceProvider::class,
+		Barryvdh\Debugbar\ServiceProvider::class,
 	],
 
 	/*
