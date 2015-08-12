@@ -7,9 +7,14 @@
 
 	{!! Form::open(['url' => 'auth/login']) !!}
 
+		{{-- <div class = "form-group">
+			{!! Form::label('username', 'Username:') !!}
+			{!! Form::text('username', null, ['class' => 'form-control']) !!}
+		</div> --}}
+
 		<div class = "form-group">
-			{!! Form::label('name', 'Username:') !!}
-			{!! Form::text('name', null, ['class' => 'form-control']) !!}
+			{!! Form::label('email', 'Email:') !!}
+			{!! Form::text('email', null, ['class' => 'form-control']) !!}
 		</div>
 
 		<div class = "form-group">

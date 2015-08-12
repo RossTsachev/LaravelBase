@@ -12,11 +12,7 @@ class CreatePostsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('posts', function(Blueprint $table)
-		{
-			$table->increments('id');
-			$table->timestamps();
-		});
+		//empty by intent
 	}
 
 	/**
@@ -26,7 +22,7 @@ class CreatePostsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('posts');
+		//empty by intent
 	}
 
 }
