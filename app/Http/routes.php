@@ -12,6 +12,9 @@ Route::controllers([
 Route::resource('books', 'BookController');
 Route::resource('authors', 'AuthorController');
 
+//set default home link
+Route::get('/home', 'BookController@index');
+
 //comments for a book
 Route::post('books/{books}', 'PostController@store');
 
