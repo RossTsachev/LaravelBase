@@ -7,7 +7,11 @@
 @section('content')
     <h1>Books</h1>
 
-    <table id = "books-table" class = "table table-striped table-hover">
+    <table
+        id = "books-table"
+        class = "table table-striped table-hover dt-responsive"
+        width = "100%"
+    >
         <thead>
             <tr>
                 <th>Id</th>
@@ -23,6 +27,14 @@
     <script>
         $(function() {
             $('#books-table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyFlash',
+                    'csvFlash',
+                    'excelFlash',
+                    'pdfFlash'
+                ],
+                responsive: true,
                 processing: true,
                 serverSide: true,
                 ajax: 'http://laravelbase.app/book/getBooks',

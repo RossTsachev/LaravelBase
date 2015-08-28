@@ -8,10 +8,14 @@
 
 	<h1>Authors</h1>
 
-	<table id = "authors-table" class = "table table-striped table-hover">
+	<table
+        id = "authors-table"
+        class = "table table-striped table-hover display dt-responsive"
+        width = "100%"
+    >
 		<thead>
 			<tr>
-				<th>Id</th>
+                <th>Id</th>
                 <th>Name</th>
 				<th>Books</th>
 				<th></th>
@@ -25,6 +29,13 @@
     <script>
         $(function() {
             $('#authors-table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyFlash',
+                    'csvFlash',
+                    'excelFlash',
+                    'pdfFlash'
+                ],
                 processing: true,
                 serverSide: true,
                 ajax: 'http://laravelbase.app/author/getAuthors',
