@@ -2,14 +2,18 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Author extends Model {
+class Author extends Model
+{
 
-	protected $fillable = [
-		'name'
-	];
-	
-	public function books() {
-		return $this->belongsToMany('\App\Book')->withTimestamps();
-	}
-
+    protected $fillable = [
+        'name'
+    ];
+    
+    public function books()
+    {
+        return $this
+            ->belongsToMany('\App\Book')
+            ->withTimestamps()
+            ->select(['books.id', 'books.title']);
+    }
 }

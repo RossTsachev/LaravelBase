@@ -2,25 +2,28 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Book extends Model {
+class Book extends Model
+{
 
-	protected $fillable = [
-		'title'
-	];
+    protected $fillable = [
+        'title'
+    ];
 
-	public function posts()
-	{
-		return $this->hasMany('\App\Post')->orderBy('created_at', 'desc');
-	}
+    public function posts()
+    {
+        return $this->hasMany('\App\Post')->orderBy('created_at', 'desc');
+    }
 
-	public function authors() 
-	{
-		return $this->belongsToMany('\App\Author')->withTimestamps();
-	}
+    public function authors()
+    {
+        return $this
+            ->belongsToMany('\App\Author')
+            ->withTimestamps()
+            ->select(['authors.id', 'authors.name']);
+    }
 
-	public function getAuthorListAttribute()
-	{
-		return $this->authors->lists('id');
-	}
-
+    public function getAuthorListAttribute()
+    {
+        return $this->authors->lists('id');
+    }
 }

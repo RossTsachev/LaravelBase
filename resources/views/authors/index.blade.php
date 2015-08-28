@@ -29,10 +29,25 @@
                 serverSide: true,
                 ajax: 'http://laravelbase.app/author/getAuthors',
                 columns: [
-                    {data: 'id', name: 'id'},
-                    {data: 'name', name: 'name'},
-                    {data: 'books', name: 'books'},
-                    {data: 'action', name: 'action', orderable: false, searchable: false, class: 'dt-right'}
+                    {
+                        data: 'id',
+                        name: 'id'
+                    },
+                    {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
+                        data: 'books',
+                        name: 'books'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false,
+                        class: 'dt-right'
+                    }
                 ]
             });
         });
