@@ -1,12 +1,12 @@
 <?php
 
-Route::get('/', function(){
-	return view('auth/login');
+Route::get('/', function () {
+    return view('auth/login');
 });
 
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
 ]);
 
 Route::resource('books', 'BookController');
