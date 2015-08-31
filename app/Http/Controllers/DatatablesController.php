@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 use yajra\Datatables\Datatables;
 use App\User;
 
-class DatatablesController extends Controller {
+class DatatablesController extends Controller
+{
 
-	/**
+    /**
      * returns datatatables frond end view
      * @return \Illuminate\View\View
      */
@@ -27,5 +28,4 @@ class DatatablesController extends Controller {
     {
         return Datatables::of(User::select('*'))->make(true);
     }
-
 }
