@@ -149,6 +149,7 @@ return [
 
         yajra\Datatables\DatatablesServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        MyLibrary\Eventing\EventingServiceProvider::class,
     ],
 
     /*

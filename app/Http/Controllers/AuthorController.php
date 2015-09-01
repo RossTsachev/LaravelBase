@@ -2,20 +2,18 @@
 
 namespace app\Http\Controllers;
 
+use App\Http\Controllers\BaseController;
 use App\Author;
-use App\Http\Requests;
+use App\Http\Requests\AuthorRequest;
 use Illuminate\Support\Collection;
 use Session;
 use yajra\Datatables\Datatables;
 use Illuminate\Http\Request;
+use MyLibrary\Author\StoreAuthorCommand;
 
-class AuthorController extends Controller
+class AuthorController extends BaseController
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+    
     /**
      * Display a listing of the resource.
      *
@@ -82,11 +80,11 @@ class AuthorController extends Controller
      *
      * @return Response
      */
-    public function store(Requests\AuthorRequest $request)
+    public function store(AuthorRequest $request)
     {
         $input = $request->all();
-        Author::create($input);
-        Session::flash('flash-message', 'The author was saved.');
+        $command = new StoreAuthorCommand($input['name']);
+        $this->commandBus->execute($command);
 
         return redirect('authors');
     }
