@@ -3,13 +3,15 @@
 namespace app\Http\Controllers;
 
 use App\Http\Controllers\BaseController;
-use App\Author;
+//use App\Author;
 use App\Http\Requests\AuthorRequest;
 use Illuminate\Support\Collection;
-use Session;
+//use Session;
 use yajra\Datatables\Datatables;
 use Illuminate\Http\Request;
 use MyLibrary\Author\StoreAuthorCommand;
+use MyLibrary\Author\UpdateAuthorCommand;
+use MyLibrary\Author\Author;
 
 class AuthorController extends BaseController
 {
@@ -124,13 +126,11 @@ class AuthorController extends BaseController
      *
      * @return Response
      */
-    public function update($id, Requests\AuthorRequest $request)
+    public function update($id, AuthorRequest $request)
     {
-        $author = Author::findOrFail($id);
-        $author->update(
-            $request->all()
-        );
-        Session::flash('flash-message', 'The author was updated.');
+        $input = $request->all();
+        $command = new UpdateAuthorCommand($id, $input['name']);
+        $this->commandBus->execute($command);
 
         return redirect('authors');
     }
