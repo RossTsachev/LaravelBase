@@ -1,7 +1,8 @@
-<?php namespace App\Http\Controllers;
+<?php
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\BaseController;
 
 use Illuminate\Http\Request;
 
@@ -9,14 +10,13 @@ use yajra\Datatables\Datatables;
 use App\Book;
 use App\Author;
 use Session;
+use App\Http\Requests\BookRequest;
+use Illuminate\Support\Collection;
+use MyLibrary\Book\StoreBookCommand;
+use MyLibrary\Book\UpdateBookCommand;
 
-class BookController extends Controller
+class BookController extends BaseController
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Display a listing of the resource.
@@ -75,13 +75,14 @@ class BookController extends Controller
             return view('books.create')->with('authors', $authors);
         }
 
-        public function store(Requests\BookRequest $request)
+        public function store(BookRequest $request)
         {
             $input = $request->all();
-            $book = Book::create($input);
             $authors = $request->input('author_list');
-            $book->authors()->sync($authors);
-            Session::flash('flash-message', 'The book was saved.');
+
+            $command = new StoreBookCommand($input['title'], $authors);
+            $this->commandBus->execute($command);
+
             return redirect('books');
         }
 
@@ -90,19 +91,20 @@ class BookController extends Controller
             $book = Book::findOrFail($id);
             $authors = Author::lists('name', 'id');
             $data = array(
-            'book' => $book,
-            'authors' => $authors
+                'book' => $book,
+                'authors' => $authors
             );
             return view('books.edit')->with($data);
         }
 
-        public function update($id, Requests\BookRequest $request)
+        public function update($id, BookRequest $request)
         {
-            $book = Book::findOrFail($id);
-            $book->update($request->all());
+            $input = $request->all();
             $authors = $request->input('author_list');
-            $book->authors()->sync($authors);
-            Session::flash('flash-message', 'The book was edited.');
+            
+            $command = new UpdateBookCommand($id, $input['title'], $authors);
+            $this->commandBus->execute($command);
+
             return redirect('books');
         }
 }

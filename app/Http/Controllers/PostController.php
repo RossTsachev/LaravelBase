@@ -1,15 +1,16 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Requests\PostRequest;
+use App\Http\Controllers\BaseController;
 
 use Illuminate\Http\Request;
 
 use Auth;
 use App\Post;
 use Session;
+use MyLibrary\Post\StorePostCommand;
 
-class PostController extends Controller
+class PostController extends BaseController
 {
 
     /**
@@ -17,15 +18,15 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function store($books, Requests\PostRequest $request)
+    public function store($books, PostRequest $request)
     {
-        $post = new Post;
-        $post->comment = $request->comment;
-        $userId = Auth::user()->id;
-        $post->user_id = $userId;
-        $post->book_id = $books;
-        $post->save();
-        Session::flash('flash-message', 'The post was saved.');
+        $command = new StorePostCommand(
+            Auth::user()->id,
+            $books,
+            $request->comment
+        );
+        $this->commandBus->execute($command);
+
         return redirect($request->url());
     }
 }
