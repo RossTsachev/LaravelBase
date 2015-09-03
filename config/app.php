@@ -145,11 +145,16 @@ return [
         'App\Providers\ConfigServiceProvider',
         'App\Providers\EventServiceProvider',
         'App\Providers\RouteServiceProvider',
+        'App\Providers\AuthServiceProvider',
         'Illuminate\Broadcasting\BroadcastServiceProvider',
 
         yajra\Datatables\DatatablesServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         MyLibrary\Eventing\EventingServiceProvider::class,
+
+
+
+
     ],
 
     /*
@@ -200,6 +205,8 @@ return [
         'Form'      => 'Illuminate\Html\FormFacade',
         'Html'      => 'Illuminate\Html\HtmlFacade',
         'Datatables'=> yajra\Datatables\Datatables::class,
+
+        'Gate' => Illuminate\Support\Facades\Gate::class,
 
     ],
 
