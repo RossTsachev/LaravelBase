@@ -2,18 +2,18 @@
 
 namespace app\Http\Controllers;
 
-use App\Http\Controllers\BaseController;
-//use App\Author;
-use App\Http\Requests\AuthorRequest;
-use Illuminate\Support\Collection;
-//use Session;
+use App\Http\Controllers\Controller;
+//use Illuminate\Support\Collection;
 use yajra\Datatables\Datatables;
 use Illuminate\Http\Request;
-use MyLibrary\Author\StoreAuthorCommand;
-use MyLibrary\Author\UpdateAuthorCommand;
-use MyLibrary\Author\Author;
 
-class AuthorController extends BaseController
+use App\Http\Requests\AuthorRequest;
+
+use MyLibrary\Author\Models\Author;
+use MyLibrary\Author\Jobs\StoreAuthorJob;
+use MyLibrary\Author\Jobs\UpdateAuthorJob;
+
+class AuthorController extends Controller
 {
     
     /**
@@ -85,8 +85,7 @@ class AuthorController extends BaseController
     public function store(AuthorRequest $request)
     {
         $input = $request->all();
-        $command = new StoreAuthorCommand($input['name']);
-        $this->commandBus->execute($command);
+        $this->dispatch(new StoreAuthorJob($input['name']));
 
         return redirect('authors');
     }
@@ -129,8 +128,7 @@ class AuthorController extends BaseController
     public function update($id, AuthorRequest $request)
     {
         $input = $request->all();
-        $command = new UpdateAuthorCommand($id, $input['name']);
-        $this->commandBus->execute($command);
+        $this->dispatch(new UpdateAuthorJob($id, $input['name']));
 
         return redirect('authors');
     }

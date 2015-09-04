@@ -146,13 +146,17 @@ return [
         'App\Providers\EventServiceProvider',
         'App\Providers\RouteServiceProvider',
         'App\Providers\AuthServiceProvider',
+        
+
+        // domain service providers
+        'App\Providers\AuthorServiceProvider',
+        'App\Providers\BookServiceProvider',
+        'App\Providers\PostServiceProvider',
+        
         'Illuminate\Broadcasting\BroadcastServiceProvider',
 
         yajra\Datatables\DatatablesServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        MyLibrary\Eventing\EventingServiceProvider::class,
-
-
 
 
     ],

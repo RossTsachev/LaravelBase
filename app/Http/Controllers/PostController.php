@@ -1,16 +1,17 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Auth;
 
 use App\Http\Requests\PostRequest;
-use App\Http\Controllers\BaseController;
 
-use Illuminate\Http\Request;
+use MyLibrary\Post\Models\Post;
+use MyLibrary\Post\Jobs\StorePostJob;
 
-use Auth;
-use App\Post;
-use Session;
-use MyLibrary\Post\StorePostCommand;
-
-class PostController extends BaseController
+class PostController extends Controller
 {
 
     /**
@@ -20,12 +21,11 @@ class PostController extends BaseController
      */
     public function store($books, PostRequest $request)
     {
-        $command = new StorePostCommand(
+        $this->dispatch(new StorePostJob(
             Auth::user()->id,
             $books,
             $request->comment
-        );
-        $this->commandBus->execute($command);
+        ));
 
         return redirect($request->url());
     }

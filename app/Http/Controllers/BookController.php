@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\BaseController;
-
+use App\Http\Controllers\Controller;
+//use Illuminate\Support\Collection;
+use yajra\Datatables\Datatables;
 use Illuminate\Http\Request;
 
-use yajra\Datatables\Datatables;
-use App\Book;
-use App\Author;
-use Session;
 use App\Http\Requests\BookRequest;
-use Illuminate\Support\Collection;
-use MyLibrary\Book\StoreBookCommand;
-use MyLibrary\Book\UpdateBookCommand;
 
-class BookController extends BaseController
+use MyLibrary\Book\Models\Book;
+use MyLibrary\Author\Models\Author;
+use MyLibrary\Book\Jobs\StoreBookJob;
+use MyLibrary\Book\Jobs\UpdateBookJob;
+
+//use Session;
+
+class BookController extends Controller
 {
 
     /**
@@ -79,9 +80,7 @@ class BookController extends BaseController
         {
             $input = $request->all();
             $authors = $request->input('author_list');
-
-            $command = new StoreBookCommand($input['title'], $authors);
-            $this->commandBus->execute($command);
+            $this->dispatch(new StoreBookJob($input['title'], $authors));
 
             return redirect('books');
         }
@@ -101,9 +100,7 @@ class BookController extends BaseController
         {
             $input = $request->all();
             $authors = $request->input('author_list');
-            
-            $command = new UpdateBookCommand($id, $input['title'], $authors);
-            $this->commandBus->execute($command);
+            $this->dispatch(new UpdateBookJob($id, $input['title'], $authors));
 
             return redirect('books');
         }

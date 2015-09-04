@@ -1,12 +1,5 @@
 <?php
 
-// foreach (['\MyLibrary\Listeners\FlashNotifier'] as $listener) {
-//     Event::listen(
-//         'MyLibrary.*',
-//         $listener
-//     );
-// }
-
 Route::get('/', function () {
     return view('auth/login');
 });
