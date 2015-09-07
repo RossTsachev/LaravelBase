@@ -5,7 +5,7 @@ namespace MyLibrary\Author\Events;
 use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use MyLibrary\Author\Models\Author;
+use MyLibrary\Author\Models\AuthorRepositoryInterface;
 
 class AuthorWasStored extends Event
 {
@@ -18,9 +18,9 @@ class AuthorWasStored extends Event
      *
      * @return void
      */
-    public function __construct(Author $author)
+    public function __construct(AuthorRepositoryInterface $authorRepo)
     {
-        $this->author = $author;
+        $this->author = $authorRepo->author;
     }
 
     /**

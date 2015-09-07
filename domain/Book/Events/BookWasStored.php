@@ -5,7 +5,7 @@ namespace MyLibrary\Book\Events;
 use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use MyLibrary\Book\Models\Book;
+use MyLibrary\Book\Models\BookRepositoryInterface;
 
 class BookWasStored extends Event
 {
@@ -18,9 +18,9 @@ class BookWasStored extends Event
      *
      * @return void
      */
-    public function __construct(Book $book)
+    public function __construct(BookRepositoryInterface $bookRepo)
     {
-        $this->book = $book;
+        $this->book = $bookRepo->book;
     }
 
     /**

@@ -4,7 +4,7 @@ namespace MyLibrary\Book\Jobs;
 
 use App\Jobs\Job;
 use Illuminate\Contracts\Bus\SelfHandling;
-use MyLibrary\Book\Models\Book;
+use MyLibrary\Book\Models\BookRepositoryInterface;
 
 ;
 
@@ -29,7 +29,7 @@ class StoreBookJob extends Job implements SelfHandling
      *
      * @return void
      */
-    public function handle(Book $book)
+    public function handle(BookRepositoryInterface $book)
     {
         $book->store($this->title, $this->authors);
     }

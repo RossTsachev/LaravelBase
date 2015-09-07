@@ -4,7 +4,7 @@ namespace MyLibrary\Author\Jobs;
 
 use App\Jobs\Job;
 use Illuminate\Contracts\Bus\SelfHandling;
-use MyLibrary\Author\Models\Author;
+use MyLibrary\Author\Models\AuthorRepositoryInterface;
 
 ;
 
@@ -29,7 +29,7 @@ class UpdateAuthorJob extends Job implements SelfHandling
      *
      * @return void
      */
-    public function handle(Author $author)
+    public function handle(AuthorRepositoryInterface $author)
     {
         $author->edit($this->id, $this->name);
     }

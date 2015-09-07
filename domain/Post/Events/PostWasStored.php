@@ -5,7 +5,7 @@ namespace MyLibrary\Post\Events;
 use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use MyLibrary\Post\Models\Post;
+use MyLibrary\Post\Models\PostRepositoryInterface;
 
 class PostWasStored extends Event
 {
@@ -18,9 +18,9 @@ class PostWasStored extends Event
      *
      * @return void
      */
-    public function __construct(Post $post)
+    public function __construct(PostRepositoryInterface $postRepo)
     {
-        $this->post = $post;
+        $this->post = $postRepo->post;
     }
 
     /**

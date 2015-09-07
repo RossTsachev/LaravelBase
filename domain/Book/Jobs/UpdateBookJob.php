@@ -4,7 +4,7 @@ namespace MyLibrary\Book\Jobs;
 
 use App\Jobs\Job;
 use Illuminate\Contracts\Bus\SelfHandling;
-use MyLibrary\Book\Models\Book;
+use MyLibrary\Book\Models\BookRepositoryInterface;
 
 ;
 
@@ -31,7 +31,7 @@ class UpdateBookJob extends Job implements SelfHandling
      *
      * @return void
      */
-    public function handle(Book $book)
+    public function handle(BookRepositoryInterface $book)
     {
         $book->edit($this->id, $this->title, $this->authors);
     }

@@ -4,7 +4,7 @@ namespace MyLibrary\Post\Jobs;
 
 use App\Jobs\Job;
 use Illuminate\Contracts\Bus\SelfHandling;
-use MyLibrary\Post\Models\Post;
+use MyLibrary\Post\Models\PostRepositoryInterface;
 
 ;
 
@@ -31,7 +31,7 @@ class StorePostJob extends Job implements SelfHandling
      *
      * @return void
      */
-    public function handle(Post $post)
+    public function handle(PostRepositoryInterface $post)
     {
         $post->store(
             $this->userId,

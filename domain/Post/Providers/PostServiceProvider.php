@@ -24,4 +24,15 @@ class PostServiceProvider extends ServiceProvider
     protected $subscribe = [
         'MyLibrary\Post\Listeners\FlashNotifier',
     ];
+
+    /**
+     * binding the reporsitory interface
+     */
+    public function register()
+    {
+        $this->app->bind(
+            'MyLibrary\Post\Models\PostRepositoryInterface',
+            'MyLibrary\Post\Models\PostRepository'
+        );
+    }
 }
