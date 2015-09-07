@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Providers;
+namespace MyLibrary\Post\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
-class AuthorServiceProvider extends ServiceProvider
+class PostServiceProvider extends ServiceProvider
 {
     /**
      * The event listener mappings for the application.
@@ -22,6 +22,6 @@ class AuthorServiceProvider extends ServiceProvider
      * @var array
      */
     protected $subscribe = [
-        'MyLibrary\Author\Listeners\FlashNotifier',
+        'MyLibrary\Post\Listeners\FlashNotifier',
     ];
 }

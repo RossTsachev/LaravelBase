@@ -134,12 +134,13 @@ return [
         'Illuminate\Session\SessionServiceProvider',
         'Illuminate\Translation\TranslationServiceProvider',
         'Illuminate\Validation\ValidationServiceProvider',
+        'Illuminate\Broadcasting\BroadcastServiceProvider',
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Html\HtmlServiceProvider',
 
         /*
-		 * Application Service Providers...
-		 */
+         * Application Service Providers...
+         */
         'App\Providers\AppServiceProvider',
         'App\Providers\BusServiceProvider',
         'App\Providers\ConfigServiceProvider',
@@ -149,12 +150,11 @@ return [
         
 
         // domain service providers
-        'App\Providers\AuthorServiceProvider',
-        'App\Providers\BookServiceProvider',
-        'App\Providers\PostServiceProvider',
+        MyLibrary\Author\Providers\AuthorServiceProvider::class,
+        MyLibrary\Book\Providers\BookServiceProvider::class,
+        MyLibrary\Post\Providers\PostServiceProvider::class,
         
-        'Illuminate\Broadcasting\BroadcastServiceProvider',
-
+        //external libs
         yajra\Datatables\DatatablesServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 

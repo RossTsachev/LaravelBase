@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Providers;
+namespace MyLibrary\Author\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
-class PostServiceProvider extends ServiceProvider
+class AuthorServiceProvider extends ServiceProvider
 {
     /**
      * The event listener mappings for the application.
@@ -22,6 +22,17 @@ class PostServiceProvider extends ServiceProvider
      * @var array
      */
     protected $subscribe = [
-        'MyLibrary\Post\Listeners\FlashNotifier',
+        'MyLibrary\Author\Listeners\FlashNotifier',
     ];
+
+    /**
+     * binding the reporsitory interface
+     */
+    public function register()
+    {
+        $this->app->bind(
+            'MyLibrary\Author\Models\AuthorRepositoryInterface',
+            'MyLibrary\Author\Models\AuthorRepository'
+        );
+    }
 }
