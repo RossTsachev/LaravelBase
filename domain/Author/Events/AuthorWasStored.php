@@ -18,9 +18,9 @@ class AuthorWasStored extends Event
      *
      * @return void
      */
-    public function __construct(AuthorRepositoryInterface $authorRepo)
+    public function __construct(AuthorRepositoryInterface $author)
     {
-        $this->author = $authorRepo->author;
+        $this->author = $author;
     }
 
     /**

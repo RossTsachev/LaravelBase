@@ -18,9 +18,9 @@ class BookWasEdited extends Event
      *
      * @return void
      */
-    public function __construct(BookRepositoryInterface $bookRepo)
+    public function __construct(BookRepositoryInterface $book)
     {
-        $this->book = $bookRepo->book;
+        $this->book = $book;
     }
 
     /**

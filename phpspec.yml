@@ -1,5 +1,6 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
-        src_path: app
+        namespace: MyLibrary
+        psr4_prefix: MyLibrary
+        src_path: MyLibrary
+        spec_prefix: tests\spec
