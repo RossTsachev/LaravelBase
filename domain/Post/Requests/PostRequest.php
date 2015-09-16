@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace MyLibrary\Post\Requests;
 
 use App\Http\Requests\Request;
 
-class BookRequest extends Request
+class PostRequest extends Request
 {
 
     /**
@@ -25,7 +25,7 @@ class BookRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required|min:5'
+            'comment' => 'required|min:2'
         ];
     }
 }

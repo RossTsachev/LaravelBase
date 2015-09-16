@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace MyLibrary\Author\Requests;
 
 use App\Http\Requests\Request;
 
-class PostRequest extends Request
+class AuthorRequest extends Request
 {
 
     /**
@@ -25,7 +25,7 @@ class PostRequest extends Request
     public function rules()
     {
         return [
-            'comment' => 'required|min:2'
+            'name' => 'required|min:5|unique:authors,name'
         ];
     }
 }

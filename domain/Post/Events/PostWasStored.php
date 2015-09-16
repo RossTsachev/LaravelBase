@@ -18,9 +18,9 @@ class PostWasStored extends Event
      *
      * @return void
      */
-    public function __construct(PostRepositoryInterface $postRepo)
+    public function __construct(PostRepositoryInterface $post)
     {
-        $this->post = $postRepo->post;
+        $this->post = $post;
     }
 
     /**

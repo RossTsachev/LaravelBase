@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\BookRequest;
+use MyLibrary\Book\Requests\BookRequest;
 
 use MyLibrary\Book\Models\BookRepositoryInterface;
 use MyLibrary\Author\Models\AuthorRepositoryInterface;
