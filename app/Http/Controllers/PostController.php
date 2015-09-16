@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Auth;
 
-use App\Http\Requests\PostRequest;
+use MyLibrary\Post\Requests\PostRequest;
 
 use MyLibrary\Post\Jobs\StorePostJob;
 

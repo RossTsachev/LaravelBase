@@ -5,7 +5,7 @@ namespace app\Http\Controllers;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\AuthorRequest;
+use MyLibrary\Author\Requests\AuthorRequest;
 
 use MyLibrary\Author\Models\AuthorRepositoryInterface;
 use MyLibrary\Author\Jobs\StoreAuthorJob;

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace MyLibrary\Book\Requests;
 
 use App\Http\Requests\Request;
 
-class AuthorRequest extends Request
+class BookRequest extends Request
 {
 
     /**
@@ -25,7 +25,7 @@ class AuthorRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|min:5|unique:authors,name'
+            'title' => 'required|min:5'
         ];
     }
 }
