@@ -11,10 +11,10 @@ class AuthorTableSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Author', 1000)
+        factory('MyLibrary\Author\Models\Author', 100)
             ->create()
             ->each(function ($u) {
-                $u->books()->save(factory(App\Book::class)->make());
+                $u->books()->save(factory(MyLibrary\Book\Models\Book::class)->make());
             });
     }
 }
