@@ -1,1 +1,1 @@
-{"version":3,"sources":["app.css","app.less"],"names":[],"mappings":"AAAA,yECAQ","file":"app.css","sourcesContent":[null,"@import \"/vendor/bower_components/bootstrap/dist/css/bootstrap.min.css\";"],"sourceRoot":"/source/"}
+{"version":3,"sources":["app.css","app.less"],"names":[],"mappings":"AAAA,wECAQ","file":"app.css","sourcesContent":["@import \"/vendor/bower_components/bootstrap/dist/css/bootstrap.min.css\";\n","@import \"/vendor/bower_components/bootstrap/dist/css/bootstrap.min.css\";"],"sourceRoot":"/source/"}

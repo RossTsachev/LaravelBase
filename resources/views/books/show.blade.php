@@ -39,7 +39,7 @@
             {!! Form::close() !!}
         </div>
 
-        @foreach($book->posts as $post) 
+        @foreach($book->posts()->simplePaginate(10) as $post) 
         <div class = "panel-body">
         	<header class = "text-left">
             	<div class = "comment-user"><i class = "fa fa-user"></i> {{$post->user->name}}</div>
@@ -58,5 +58,6 @@
           	</div>
         </div>
         @endforeach
+        {!! $book->posts()->simplePaginate(10)->render() !!}
     </div>
 @stop

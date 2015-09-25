@@ -31,3 +31,11 @@ $factory->define(MyLibrary\Book\Models\Book::class, function (Faker\Generator $f
         'title' => $faker->sentence,
     ];
 });
+
+$factory->define(MyLibrary\Post\Models\Post::class, function (Faker\Generator $faker) {
+    return [
+        'user_id' => 1,
+        'book_id' => 1,
+        'comment' => $faker->sentence,
+    ];
+});

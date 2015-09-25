@@ -19,6 +19,9 @@ elixir(function(mix) {
 	mix.styles([
 		'libs/select2.min.css',
 		'libs/bootstrap.min.css',
+		'libs/jquery.dataTables.min.css',
+		'libs/buttons.dataTables.min.css',
+		'libs/responsive.dataTables.min.css',
 		'app.css'
 		], 
 		'public/css'
@@ -28,6 +31,11 @@ elixir(function(mix) {
 			'libs/jquery.min.js',
 			'libs/bootstrap.min.js',
 			'libs/select2.min.js',
+			'libs/jquery.infinitescroll.min.js',
+			'libs/jquery.dataTables.min.js',
+			'libs/dataTables.buttons.min.js',
+			'libs/buttons.flash.min.js',
+			'libs/dataTables.responsive.min.js',
 			'app.js'
 		],
 		'public/js'
