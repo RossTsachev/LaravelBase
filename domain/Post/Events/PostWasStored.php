@@ -22,14 +22,4 @@ class PostWasStored extends Event
     {
         $this->post = $post;
     }
-
-    /**
-     * Get the channels the event should be broadcast on.
-     *
-     * @return array
-     */
-    public function broadcastOn()
-    {
-        return [];
-    }
 }

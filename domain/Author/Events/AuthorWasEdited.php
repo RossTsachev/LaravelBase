@@ -22,14 +22,4 @@ class AuthorWasEdited extends Event
     {
         $this->author = $author;
     }
-
-    /**
-     * Get the channels the event should be broadcast on.
-     *
-     * @return array
-     */
-    public function broadcastOn()
-    {
-        return [];
-    }
 }
