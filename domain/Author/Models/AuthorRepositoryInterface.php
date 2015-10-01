@@ -11,6 +11,4 @@ interface AuthorRepositoryInterface
     public function store($name);
 
     public function edit($id, $name);
-
-    public function datatables($request);
 }

@@ -9,6 +9,4 @@ interface BookRepositoryInterface
     public function store($title, $authors);
 
     public function edit($id, $title, $authors);
-
-    public function datatables($request);
 }

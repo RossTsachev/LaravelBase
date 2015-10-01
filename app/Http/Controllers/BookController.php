@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use MyLibrary\Book\Requests\BookRequest;
 
 use MyLibrary\Book\Models\BookRepositoryInterface;
+use MyLibrary\Book\Models\BookDatatables;
 use MyLibrary\Author\Models\AuthorRepositoryInterface;
 use MyLibrary\Book\Jobs\StoreBookJob;
 use MyLibrary\Book\Jobs\UpdateBookJob;
@@ -37,9 +38,9 @@ class BookController extends Controller
         return view('books.index');
     }
 
-    public function getBooks(Request $request)
+    public function getBooks(Request $request, BookDatatables $datatables)
     {
-        $result = $this->book->datatables($request);
+        $result = $datatables->datatables($request);
         
         return $result;
     }

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use MyLibrary\Author\Requests\AuthorRequest;
 
 use MyLibrary\Author\Models\AuthorRepositoryInterface;
+use MyLibrary\Author\Models\AuthorDatatables;
 use MyLibrary\Author\Jobs\StoreAuthorJob;
 use MyLibrary\Author\Jobs\UpdateAuthorJob;
 
@@ -39,9 +40,9 @@ class AuthorController extends Controller
      *
      * @return json
      */
-    public function getAuthors(Request $request)
+    public function getAuthors(Request $request, AuthorDatatables $datatables)
     {
-        $result = $this->author->datatables($request);
+        $result = $datatables->datatables($request);
         
         return $result;
     }
