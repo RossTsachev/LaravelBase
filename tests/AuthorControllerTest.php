@@ -11,10 +11,15 @@ class AuthorControllerTest extends TestCase
 
     private $savedAuthorId;
 
+    /**
+     * initial setup - calls parent setup
+     * authenticates user
+     * and creates new author
+     */
     public function setUp()
     {
         //very important
-        parent::setUp();  
+        parent::setUp();
         //authenticating user
         $user = new User(array('name' => 'test'));
         $this->be($user);
@@ -30,6 +35,7 @@ class AuthorControllerTest extends TestCase
     {
         $this->visit('authors/'.$this->saveAuthorId)
             ->see('John Lennon Junior');
+        $this->seeInDatabase('authors', ['name' => 'John Lennon Junior']);
     }
 
     public function testSaveNewAuthor()
@@ -39,6 +45,7 @@ class AuthorControllerTest extends TestCase
             ->press('Save')
             ->see('The author was saved.')
             ->onPage('/authors');
+        $this->seeInDatabase('authors', ['name' => 'John Lennon']);
     }
 
     public function testSaveSameAuthor()
@@ -48,6 +55,17 @@ class AuthorControllerTest extends TestCase
             ->press('Save')
             ->see('The name has already been taken.')
             ->onPage('/authors/create');
+    }
+
+    public function testEditAuthor()
+    {
+        $this->visit('/authors/' . $this->saveAuthorId . '/edit')
+            ->see('John Lennon')
+            ->type('John Lennon XXX', 'name')
+            ->press('Edit')
+            ->see('The author was edited.')
+            ->onPage('/authors');
+        $this->seeInDatabase('authors', ['name' => 'John Lennon XXX']);
     }
 
     public function tearDown()

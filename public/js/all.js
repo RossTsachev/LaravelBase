@@ -264,21 +264,28 @@ o(jQuery,jQuery.fn.dataTable)})(window,document);
 
 $('div.alert').delay(3000).slideUp(300);
 $('.select2').select2();
+
 /*
+$('#comments').infinitescroll();
+
+
+
 (function(){
 
     var loading_options = {
         finishedMsg: "<div class='end-msg'>Congratulations! You've reached the end of the internet</div>",
-        msgText: "<div class='center'>Loading news items...</div>",
+        msgText: "<div class='center'>Loading more comments...</div>",
         img: "/assets/img/ajax-loader.gif"
     };
 
-    $('#items').infinitescroll({
+    $('#comments').infinitescroll({
       loading : loading_options,
-      navSelector : "#news .pagination",
-      nextSelector : "#news .pagination li.active + li a",
-      itemSelector : "#items li.item"
+      navSelector : "#comments .pager",
+      nextSelector : "#comments .pager tr.active + tr a",
+      itemSelector : "#items tr.panel-body"
     });
 })();
+
 */
+
 //# sourceMappingURL=all.js.map

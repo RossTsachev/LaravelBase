@@ -24,7 +24,7 @@
         <div class = "panel-heading">
             <h3 class = "panel-title">Comment(s):</h3>
         </div>
-        <div class = "panel-body">
+        <div id = "comments" class = "panel-body">
             {!! Form::open() !!}
 
                 <div class = "form-group">

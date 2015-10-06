@@ -14,6 +14,15 @@
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">domain/</directory>
+        </whitelist>
+    </filter>
+        <logging>
+            <log type="coverage-html" target="build/coverage-phpunit" lowUpperBound="35" highLowerBound="70"/>
+            <log type="coverage-clover" target="build/coverage-phpunit/clover.xml"/>
+        </logging>
     <php>
         <env name="APP_ENV" value="testing"/>
         <env name="CACHE_DRIVER" value="array"/>
