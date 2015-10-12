@@ -35,7 +35,8 @@ class AuthorRepository implements AuthorRepositoryInterface
 
     public function dropdown()
     {
-        return Author::lists('name', 'id')->take(5);
+        return Author::lists('name', 'id');
+        //return Author::lists('name', 'id')->take(5);
     }
 
     public function store($name)
