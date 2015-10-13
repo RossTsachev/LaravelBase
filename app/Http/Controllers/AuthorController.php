@@ -43,7 +43,6 @@ class AuthorController extends Controller
     public function getAuthors(Request $request, AuthorDatatables $datatables)
     {
         $result = $datatables->datatables($request);
-        
         return $result;
     }
 
