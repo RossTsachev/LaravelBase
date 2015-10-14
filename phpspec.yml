@@ -6,8 +6,10 @@ suites:
         spec_prefix: tests\spec
 extensions:
     - PhpSpec\Laravel\Extension\LaravelExtension
-#     - PhpSpec\Extension\CodeCoverageExtension
+    - PhpSpec\Extension\CodeCoverageExtension
 
-# code_coverage:
-#    format: html
-#    output: build/coverage
+code_coverage:
+   format: html
+   output: build/coverage-phpspec
+   whitelist: 
+       - domain
